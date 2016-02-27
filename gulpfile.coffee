@@ -1,6 +1,6 @@
 # モジュールの読み込み
 gulp = require "gulp"
-sass = require 'gulp-ruby-sass'
+sass = require 'node-sass'
 $ = do require "gulp-load-plugins"
 browserSync = require "browser-sync"
 
@@ -19,12 +19,18 @@ gulp.task "bs-reload", ->
 
 # Sassのコンパイル、AutoPrefixer、リロード
 gulp.task "sass", ->
-  $.rubySass("./*.sass", {style: "compressed"})
+  $.rubySass([
+    "./assets/stylesheets/*.sass",
+    "./assets/stylesheets/**/*.sass",
+    "./assets/stylesheets/**/**/*.sass"
+    ], {style: "compressed"})
   .pipe $.autoprefixer()
-  .pipe gulp.dest "./" #cssの出力先フォルダ
+  .pipe gulp.dest "./stylesheets" #cssの出力先フォルダ
   .pipe browserSync.reload({stream:true})
 
 # デフォルトのタスク(ファイルを監視)
 gulp.task "default", ["sass", "bs"], ->
   gulp.watch "./*.html", ["bs-reload"]
-  gulp.watch "./*.sass", ["sass"]
+  gulp.watch "./stylesheets/*.sass", ["sass"]
+  gulp.watch "./stylesheets/**/*.sass", ["sass"]
+  gulp.watch "./stylesheets/**/**/*.sass", ["sass"]
