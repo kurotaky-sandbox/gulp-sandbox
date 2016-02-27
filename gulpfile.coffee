@@ -9,7 +9,8 @@ gulp.task "bs", ->
   browserSync({
     server: {
       baseDir: "./" #HTMLのあるディレクトリを指定
-    }
+    },
+    browser: "safari"
   })
 
 # リロード
