@@ -18,7 +18,7 @@ gulp.task "bs-reload", ->
 
 # Sassのコンパイル、AutoPrefixer、リロード
 gulp.task "sass", ->
-  $.rubySass("./", {style: "compressed"})
+  $.rubySass("./*.sass", {style: "compressed"})
   .pipe $.autoprefixer()
   .pipe gulp.dest "./" #cssの出力先フォルダ
   .pipe browserSync.reload({stream:true})
@@ -26,4 +26,4 @@ gulp.task "sass", ->
 # デフォルトのタスク(ファイルを監視)
 gulp.task "default", ["sass", "bs"], ->
   gulp.watch "./*.html", ["bs-reload"]
-  gulp.watch "./*.scss", ["sass"]
+  gulp.watch "./*.sass", ["sass"]
