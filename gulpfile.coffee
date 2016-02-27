@@ -1,6 +1,7 @@
 # モジュールの読み込み
 gulp = require "gulp"
 sass = require 'node-sass'
+concat = require 'gulp-concat'
 $ = do require "gulp-load-plugins"
 browserSync = require "browser-sync"
 
@@ -25,6 +26,7 @@ gulp.task "sass", ->
     "./assets/stylesheets/**/**/*.sass"
     ], {style: "compressed"})
   .pipe $.autoprefixer()
+  .pipe(concat('style.css'))
   .pipe gulp.dest "./stylesheets" #cssの出力先フォルダ
   .pipe browserSync.reload({stream:true})
 
