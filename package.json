@@ -16,5 +16,8 @@
     "gulp-concat": "^2.6.0",
     "gulp-load-plugins": "^1.2.0",
     "gulp-ruby-sass": "^2.0.6"
+  },
+  "dependencies": {
+    "sanitize.css": "^3.2.0"
   }
 }
