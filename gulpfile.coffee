@@ -24,7 +24,7 @@ gulp.task "sass", ->
     "./assets/stylesheets/*.sass",
     "./assets/stylesheets/**/*.sass",
     "./assets/stylesheets/**/**/*.sass"
-    ], {style: "compressed"})
+    ], {style: "expanded"})
   .pipe $.autoprefixer()
   .pipe(concat('style.css'))
   .pipe gulp.dest "./stylesheets" #cssの出力先フォルダ
