@@ -33,6 +33,6 @@ gulp.task "sass", ->
 # デフォルトのタスク(ファイルを監視)
 gulp.task "default", ["sass", "bs"], ->
   gulp.watch "./*.html", ["bs-reload"]
-  gulp.watch "./stylesheets/*.sass", ["sass"]
-  gulp.watch "./stylesheets/**/*.sass", ["sass"]
-  gulp.watch "./stylesheets/**/**/*.sass", ["sass"]
+  gulp.watch "./assets/stylesheets/*.sass", ["sass"]
+  gulp.watch "./assets/stylesheets/**/*.sass", ["sass"]
+  gulp.watch "./assets/stylesheets/**/**/*.sass", ["sass"]
